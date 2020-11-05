@@ -51,9 +51,12 @@ public class WebConfig implements WebMvcConfigurer {
         List<String> excludePath = new ArrayList<>();
         //排除拦截
         excludePath.add("/user/register");  // 注册
+        excludePath.add("/email");          // 发送验证码
         excludePath.add("/user/login");     // 登录
-        excludePath.add("/static/**");  //静态资源
-        excludePath.add("/assets/**");  //静态资源
+        excludePath.add("/user/update_password"); // 更改密码
+        excludePath.add("/static/**");      //静态资源
+        excludePath.add("/assets/**");      //静态资源
+        excludePath.add("/user/test");
 
         registry.addInterceptor(tokenInterceptor)
                 .addPathPatterns("/**")

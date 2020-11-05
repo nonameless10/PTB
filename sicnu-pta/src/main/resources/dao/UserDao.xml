@@ -5,6 +5,18 @@
 
 <mapper namespace="com.sicnu.pta.dao.UserDao">
     <select id="judgeUserLogin" resultType="User">
-        SELECT * FROM userinfo WHERE email = #{email} AND password = #{password}
+        SELECT * FROM user WHERE email = #{email} AND password = #{password}
     </select>
+
+    <insert id="insertNewUser" parameterType="User" useGeneratedKeys="true" keyProperty="userId">
+        INSERT INTO user(email, password, userName) VALUES (#{user.email}, #{user.password}, #{user.userName})
+    </insert>
+
+    <select id="findUserByEmail" resultType="User">
+        SELECT userId, email, password FROM user WHERE email = #{email} limit 1
+    </select>
+
+    <update id="updateUserPassword">
+        UPDATE user SET password = #{password} WHERE email = #{email}
+    </update>
 </mapper>

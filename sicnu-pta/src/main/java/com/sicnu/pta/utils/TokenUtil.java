@@ -13,13 +13,10 @@ public class TokenUtil {
     private static final String TOKEN_SECRET="nonameless";  //密钥盐
 
     /*
-     *
-     * @Author nonameless
-     * @Description //TODO 生成签名
-     * @Date 14:32 2020/10/8
-     * @Param [user]
-     * @return java.lang.String
-     **/
+     * 生成 token 签名
+     * @param user 用户实体类
+     * @return String token
+     */
     public static String sign(User user) {
         String token = null;
         try {
